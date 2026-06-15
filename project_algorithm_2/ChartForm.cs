@@ -7,8 +7,7 @@ namespace project_algorithm_2
 {
     public partial class ChartForm : Form
     {
-     
-        public ChartForm(double bubble, double selection, double insertion, double merge, double quick)
+        public ChartForm(double bubble, double selection, double insertion, double merge, double quick, double bakir)
         {
             InitializeComponent();
 
@@ -18,6 +17,7 @@ namespace project_algorithm_2
             chart1.Series["InsertionSeries"].Points.Clear();
             chart1.Series["MergeSeries"].Points.Clear();
             chart1.Series["QuickSeries"].Points.Clear();
+            chart1.Series["BakirSeries"].Points.Clear();
 
             // 2. تفعيل ظهور الأرقام فوق الأعمدة
             chart1.Series["BubbleSeries"].IsValueShownAsLabel = true;
@@ -25,17 +25,15 @@ namespace project_algorithm_2
             chart1.Series["InsertionSeries"].IsValueShownAsLabel = true;
             chart1.Series["MergeSeries"].IsValueShownAsLabel = true;
             chart1.Series["QuickSeries"].IsValueShownAsLabel = true;
+            chart1.Series["BakirSeries"].IsValueShownAsLabel = true;
 
-            // 3. تمرير القيم البرمجية مع تحديد موقع (X) مختلف لكل خوارزمية لتبتعد عن بعضها
-            chart1.Series["BubbleSeries"].Points.AddXY("", bubble);
-            chart1.Series["SelectionSeries"].Points.AddXY("", selection);
-            chart1.Series["InsertionSeries"].Points.AddXY("", insertion);
-            chart1.Series["MergeSeries"].Points.AddXY("", merge);
-            chart1.Series["QuickSeries"].Points.AddXY("", quick);
+            // 3. الحل: تمرير اسم الخوارزمية كقيمة للمحور X ليفصل البرنامج بين الأعمدة
+            chart1.Series["BubbleSeries"].Points.AddXY("Bubble", bubble);
+            chart1.Series["SelectionSeries"].Points.AddXY("Selection", selection);
+            chart1.Series["InsertionSeries"].Points.AddXY("Insertion", insertion);
+            chart1.Series["MergeSeries"].Points.AddXY("Merge", merge);
+            chart1.Series["QuickSeries"].Points.AddXY("Quick", quick);
+            chart1.Series["BakirSeries"].Points.AddXY("Bakir", bakir);
         }
-
-        // دالة مساعدة لإضافة النقطة وتلوينها بشكل مستقل تماماً
-        
-     
     }
 }

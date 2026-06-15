@@ -36,6 +36,7 @@
             btnGenerate = new Button();
             label2 = new Label();
             panel10 = new Panel();
+            button1 = new Button();
             label5 = new Label();
             lblminTime = new Label();
             lblBest = new Label();
@@ -57,11 +58,13 @@
             lbl_Merge_Time = new Label();
             lblMergeSort = new Label();
             panel3 = new Panel();
+            panel12 = new Panel();
+            lbl_bakir_Time = new Label();
+            label9 = new Label();
             panel9 = new Panel();
             lbl_Quick_Time = new Label();
             lblQuickSort = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            button1 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numElements).BeginInit();
@@ -72,6 +75,7 @@
             panel7.SuspendLayout();
             panel8.SuspendLayout();
             panel3.SuspendLayout();
+            panel12.SuspendLayout();
             panel9.SuspendLayout();
             SuspendLayout();
             // 
@@ -163,10 +167,22 @@
             panel10.Controls.Add(lblminTime);
             panel10.Controls.Add(lblBest);
             panel10.Controls.Add(label17);
-            panel10.Location = new Point(62, 505);
+            panel10.Location = new Point(62, 559);
             panel10.Name = "panel10";
-            panel10.Size = new Size(1076, 103);
+            panel10.Size = new Size(1076, 133);
             panel10.TabIndex = 3;
+            // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.GradientActiveCaption;
+            button1.Font = new Font("Simplified Arabic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(63, 31);
+            button1.Name = "button1";
+            button1.Size = new Size(223, 66);
+            button1.TabIndex = 7;
+            button1.Text = "عرض الرسم البياني ";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
             // label5
             // 
@@ -174,7 +190,7 @@
             label5.BackColor = Color.GhostWhite;
             label5.Font = new Font("Simplified Arabic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Blue;
-            label5.Location = new Point(479, 4);
+            label5.Location = new Point(472, 19);
             label5.Name = "label5";
             label5.Size = new Size(197, 47);
             label5.TabIndex = 6;
@@ -184,7 +200,7 @@
             // 
             lblminTime.AutoSize = true;
             lblminTime.Font = new Font("Simplified Arabic", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblminTime.Location = new Point(504, 51);
+            lblminTime.Location = new Point(497, 66);
             lblminTime.Name = "lblminTime";
             lblminTime.Size = new Size(95, 46);
             lblminTime.TabIndex = 5;
@@ -195,18 +211,19 @@
             lblBest.AutoSize = true;
             lblBest.BackColor = Color.GhostWhite;
             lblBest.Font = new Font("Simplified Arabic", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblBest.Location = new Point(828, 53);
+            lblBest.Location = new Point(816, 66);
             lblBest.Name = "lblBest";
             lblBest.Size = new Size(95, 46);
             lblBest.TabIndex = 2;
             lblBest.Text = "-----";
+            lblBest.Click += lblBest_Click;
             // 
             // label17
             // 
             label17.BackColor = Color.GhostWhite;
             label17.Font = new Font("Simplified Arabic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label17.ForeColor = Color.Blue;
-            label17.Location = new Point(789, 4);
+            label17.Location = new Point(789, 19);
             label17.Name = "label17";
             label17.Size = new Size(213, 47);
             label17.TabIndex = 1;
@@ -219,7 +236,7 @@
             btnTest.BackColor = Color.Transparent;
             btnTest.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTest.ForeColor = Color.Blue;
-            btnTest.Location = new Point(706, 127);
+            btnTest.Location = new Point(721, 127);
             btnTest.Name = "btnTest";
             btnTest.Size = new Size(279, 53);
             btnTest.TabIndex = 4;
@@ -397,6 +414,7 @@
             // 
             panel3.BackColor = Color.FromArgb(224, 224, 224);
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(panel12);
             panel3.Controls.Add(panel9);
             panel3.Controls.Add(panel8);
             panel3.Controls.Add(panel7);
@@ -405,8 +423,40 @@
             panel3.Controls.Add(panel4);
             panel3.Location = new Point(61, 185);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1077, 290);
+            panel3.Size = new Size(1077, 342);
             panel3.TabIndex = 2;
+            // 
+            // panel12
+            // 
+            panel12.BackColor = SystemColors.ActiveCaption;
+            panel12.BorderStyle = BorderStyle.Fixed3D;
+            panel12.Controls.Add(lbl_bakir_Time);
+            panel12.Controls.Add(label9);
+            panel12.Dock = DockStyle.Top;
+            panel12.Location = new Point(0, 286);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(1075, 55);
+            panel12.TabIndex = 7;
+            // 
+            // lbl_bakir_Time
+            // 
+            lbl_bakir_Time.AutoSize = true;
+            lbl_bakir_Time.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl_bakir_Time.Location = new Point(183, 7);
+            lbl_bakir_Time.Name = "lbl_bakir_Time";
+            lbl_bakir_Time.Size = new Size(32, 38);
+            lbl_bakir_Time.TabIndex = 2;
+            lbl_bakir_Time.Text = "0";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(789, 3);
+            label9.Name = "label9";
+            label9.Size = new Size(139, 38);
+            label9.TabIndex = 0;
+            label9.Text = "Bakir sort";
             // 
             // panel9
             // 
@@ -417,7 +467,7 @@
             panel9.Dock = DockStyle.Top;
             panel9.Location = new Point(0, 235);
             panel9.Name = "panel9";
-            panel9.Size = new Size(1075, 54);
+            panel9.Size = new Size(1075, 51);
             panel9.TabIndex = 6;
             // 
             // lbl_Quick_Time
@@ -439,24 +489,12 @@
             lblQuickSort.TabIndex = 0;
             lblQuickSort.Text = "Quick sort";
             // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.GradientActiveCaption;
-            button1.Font = new Font("Simplified Arabic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(65, 16);
-            button1.Name = "button1";
-            button1.Size = new Size(223, 66);
-            button1.TabIndex = 7;
-            button1.Text = "عرض الرسم البياني ";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click_1;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
-            ClientSize = new Size(1182, 653);
+            ClientSize = new Size(1182, 753);
             Controls.Add(btnTest);
             Controls.Add(panel10);
             Controls.Add(panel2);
@@ -469,6 +507,7 @@
             Name = "Form1";
             RightToLeftLayout = true;
             Text = "مقارنة خوارزميات الترتيب ";
+            Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -487,6 +526,8 @@
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
             panel3.ResumeLayout(false);
+            panel12.ResumeLayout(false);
+            panel12.PerformLayout();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
             ResumeLayout(false);
@@ -528,5 +569,8 @@
         private Label lbl_Quick_Time;
         private Label lblQuickSort;
         private Button button1;
+        private Panel panel12;
+        private Label lbl_bakir_Time;
+        private Label label9;
     }
 }

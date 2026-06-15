@@ -160,6 +160,35 @@ namespace project_algorithm_2
                 QuickSort(a, pi + 1, high);
             }
         }
+        void BakirSort(int[] a)
+        {
+
+            int max = a[0];
+            for (int i = 1; i < a.Length; i++)
+            {
+                if (a[i] > max) max = a[i];
+            }
+
+            int[] count = new int[max + 1];
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                count[a[i]]++;
+            }
+
+            int[] result = new int[a.Length];
+            int index = 0;
+
+            for (int i = 0; i < count.Length; i++)
+            {
+                for (int j = 0; j < count[i]; j++)
+                {
+                    result[index] = i;
+                    index++;
+                }
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             int size = (int)numElements.Value;
@@ -167,7 +196,7 @@ namespace project_algorithm_2
             Random rand = new Random();
             for (int i = 0; i < size; i++)
             {
-                a[i] = rand.Next(1, 1000);
+                a[i] = rand.Next(1, 100);
 
             }
             lblViewMessege.Visible = true;
@@ -176,82 +205,97 @@ namespace project_algorithm_2
 
         private int[] a = null!;
         // المتغيرات العامة التي ستحتفظ بالوقت وتمرره للفورم الثاني
-        private double bubbleTime, selectionTime, insertionTime, mergeTime, quickTime;
+        private double bubbleTime, selectionTime, insertionTime, mergeTime, quickTime, bakirTime;
 
         private void btnTest_Click(object sender, EventArgs e)
         {
             if (a == null || a.Length == 0)
             {
-                MessageBox.Show("الرجاء توليد المصفوفة العشوائية أولا ");
+                MessageBox.Show("الرجاء توليد المصفوفة العشوائية أولا");
                 return;
             }
+
             lblViewMessege.Visible = false;
             btnTest.Text = "جاري المقارنة...";
             btnTest.Enabled = false;
             Application.DoEvents();
             Stopwatch sw = new Stopwatch();
 
+            // اختبار Bubble Sort
             int[] arryForBubble = (int[])a.Clone();
             sw.Restart();
             BubbleSort(arryForBubble);
             sw.Stop();
-            bubbleTime = sw.Elapsed.TotalMilliseconds; // تعديل الحرف لتخزينها بالمتغير العام
-            lbl_Bubble_Time.Text = bubbleTime.ToString() + "ms";
+            bubbleTime = Math.Round(sw.Elapsed.TotalMilliseconds, 4);
+            lbl_Bubble_Time.Text = bubbleTime.ToString() + " ms";
+            Console.WriteLine($"Bubble: {bubbleTime} ms"); // للتأكد من القيمة
 
-
+            // اختبار Selection Sort
             int[] arryForSelection = (int[])a.Clone();
             sw.Restart();
             SelectionSort(arryForSelection);
             sw.Stop();
-            selectionTime = sw.Elapsed.TotalMilliseconds; // تعديل
-            lbl_Selection_Time.Text = selectionTime.ToString() + "ms";
+            selectionTime = Math.Round(sw.Elapsed.TotalMilliseconds, 4);
+            lbl_Selection_Time.Text = selectionTime.ToString() + " ms";
+            Console.WriteLine($"Selection: {selectionTime} ms");
 
-
+            // اختبار Insertion Sort
             int[] arryForInsertion = (int[])a.Clone();
             sw.Restart();
             InsertionSort(arryForInsertion);
             sw.Stop();
-            insertionTime = sw.Elapsed.TotalMilliseconds; // تعديل
-            lbl_Insertion_Time.Text = insertionTime.ToString() + "ms";
+            insertionTime = Math.Round(sw.Elapsed.TotalMilliseconds, 4);
+            lbl_Insertion_Time.Text = insertionTime.ToString() + " ms";
+            Console.WriteLine($"Insertion: {insertionTime} ms");
 
+            // اختبار Merge Sort
             int[] arryForMerge = (int[])a.Clone();
             sw.Restart();
             MergeSort(arryForMerge, 0, a.Length - 1);
             sw.Stop();
-            mergeTime = sw.Elapsed.TotalMilliseconds; // تعديل
-            lbl_Merge_Time.Text = mergeTime.ToString() + "ms";
+            mergeTime = Math.Round(sw.Elapsed.TotalMilliseconds, 4);
+            lbl_Merge_Time.Text = mergeTime.ToString() + " ms";
+            Console.WriteLine($"Merge: {mergeTime} ms");
 
+            // اختبار Quick Sort
             int[] arryForQuick = (int[])a.Clone();
             sw.Restart();
             QuickSort(arryForQuick, 0, a.Length - 1);
             sw.Stop();
-            quickTime = sw.Elapsed.TotalMilliseconds; // تعديل
-            lbl_Quick_Time.Text = quickTime.ToString() + "ms";
+            quickTime = Math.Round(sw.Elapsed.TotalMilliseconds, 4);
+            lbl_Quick_Time.Text = quickTime.ToString() + " ms";
+            Console.WriteLine($"Quick: {quickTime} ms");
 
+            // اختبار Bakir Sort
+            int[] arryForBakir = (int[])a.Clone();
+            sw.Restart();
+            BakirSort(arryForBakir);
+            sw.Stop();
+            bakirTime = Math.Round(sw.Elapsed.TotalMilliseconds, 4);
+            lbl_bakir_Time.Text = bakirTime.ToString() + " ms";
+            Console.WriteLine($"Bakir: {bakirTime} ms");
 
-            double[] allTime = { bubbleTime, selectionTime, insertionTime, mergeTime, quickTime };
-            String[] allNames = { "Bubble Sort", "Selection Sort", "Insertion Sort", "Merge Sort", "Quick Sort" };
+            // العثور على أفضل خوارزمية
+            double[] allTime = { bubbleTime, selectionTime, insertionTime, mergeTime, quickTime, bakirTime };
+            string[] allNames = { "Bubble Sort", "Selection Sort", "Insertion Sort", "Merge Sort", "Quick Sort", "Bakir Sort" };
+
             double minTime = allTime[0];
-            int bastIndex = 0;
+            int bestIndex = 0;
             for (int i = 1; i < allTime.Length; i++)
             {
                 if (allTime[i] < minTime)
                 {
                     minTime = allTime[i];
-                    bastIndex = i;
+                    bestIndex = i;
                 }
             }
 
-            lblminTime.Text = minTime.ToString() + "ms";
-
-
-            string bestName = allNames[bastIndex];
-            lblBest.Text = bestName;
+            lblminTime.Text = minTime.ToString() + " ms";
+            lblBest.Text = allNames[bestIndex];
 
             btnTest.Text = "بدء المقارنة";
             btnTest.Enabled = true;
         }
-
         // كود حدث الضغط على زر عرض الرسم البياني الجديد
         private void btnShowChart_Click(object sender, EventArgs e)
         {
@@ -261,9 +305,9 @@ namespace project_algorithm_2
                 return;
             }
 
-            ChartForm frmChart = new ChartForm(bubbleTime, selectionTime, insertionTime, mergeTime, quickTime);
+            ChartForm frmChart = new ChartForm(bubbleTime, selectionTime, insertionTime, mergeTime, quickTime ,bakirTime);
             frmChart.ShowDialog();
-           
+
         }
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -274,9 +318,19 @@ namespace project_algorithm_2
             }
 
             // فتح فورم الرسم البياني وتمرير الأوقات المخزنة له
-            ChartForm frmChart = new ChartForm(bubbleTime, selectionTime, insertionTime, mergeTime, quickTime);
+            ChartForm frmChart = new ChartForm(bubbleTime, selectionTime, insertionTime, mergeTime, quickTime,bakirTime);
             frmChart.ShowDialog();
-           
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblBest_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
