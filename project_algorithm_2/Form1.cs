@@ -189,7 +189,7 @@ namespace project_algorithm_2
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       private void button1_Click(object sender, EventArgs e)
         {
             int size = (int)numElements.Value;
             a = new int[size];

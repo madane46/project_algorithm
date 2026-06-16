@@ -110,34 +110,34 @@
             chart1.Legends.Add(legend1);
             chart1.Location = new Point(201, 98);
             chart1.Name = "chart1";
-            chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series1.ChartArea = "ChartArea1";
             series1.CustomProperties = "PointWidth=1";
             series1.IsXValueIndexed = true;
             series1.Legend = "Legend1";
-            series1.Name = "SelectionSeries";
+            series1.Name = "BubbleSeries";
             series2.ChartArea = "ChartArea1";
             series2.CustomProperties = "PointWidth=1";
             series2.IsXValueIndexed = true;
             series2.Legend = "Legend1";
-            series2.Name = "InsertionSeries";
+            series2.Name = "SelectionSeries";
             series3.ChartArea = "ChartArea1";
             series3.CustomProperties = "PointWidth=1";
             series3.IsXValueIndexed = true;
             series3.Legend = "Legend1";
-            series3.Name = "MergeSeries";
+            series3.Name = "InsertionSeries";
             series4.ChartArea = "ChartArea1";
             series4.CustomProperties = "PointWidth=1";
             series4.IsXValueIndexed = true;
             series4.Legend = "Legend1";
-            series4.Name = "QuickSeries";
+            series4.Name = "MergeSeries";
             series5.ChartArea = "ChartArea1";
             series5.CustomProperties = "PointWidth=1";
             series5.IsXValueIndexed = true;
             series5.Legend = "Legend1";
-            series5.Name = "BubbleSeries";
+            series5.Name = "QuickSeries";
             series6.ChartArea = "ChartArea1";
-            series6.CustomProperties = "PixelPointWidth=1";
+            series6.CustomProperties = "PointWidth=1";
+            series6.IsXValueIndexed = true;
             series6.Legend = "Legend1";
             series6.Name = "BakirSeries";
             chart1.Series.Add(series1);
@@ -149,6 +149,7 @@
             chart1.Size = new Size(737, 558);
             chart1.TabIndex = 0;
             chart1.Text = "chart1";
+            chart1.Click += chart1_Click;
             // 
             // ChartForm
             // 

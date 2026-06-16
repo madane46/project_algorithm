@@ -28,12 +28,19 @@ namespace project_algorithm_2
             chart1.Series["BakirSeries"].IsValueShownAsLabel = true;
 
             // 3. الحل: تمرير اسم الخوارزمية كقيمة للمحور X ليفصل البرنامج بين الأعمدة
-            chart1.Series["BubbleSeries"].Points.AddXY("Bubble", bubble);
+            chart1.Series["BubbleSeries"].Points.AddXY(" ",bubble);
             chart1.Series["SelectionSeries"].Points.AddXY("Selection", selection);
             chart1.Series["InsertionSeries"].Points.AddXY("Insertion", insertion);
             chart1.Series["MergeSeries"].Points.AddXY("Merge", merge);
             chart1.Series["QuickSeries"].Points.AddXY("Quick", quick);
             chart1.Series["BakirSeries"].Points.AddXY("Bakir", bakir);
         }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
