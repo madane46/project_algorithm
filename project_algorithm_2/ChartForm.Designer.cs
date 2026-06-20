@@ -108,7 +108,7 @@
             chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             chart1.Legends.Add(legend1);
-            chart1.Location = new Point(201, 98);
+            chart1.Location = new Point(50, 41);
             chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.CustomProperties = "PointWidth=1";
@@ -146,7 +146,7 @@
             chart1.Series.Add(series4);
             chart1.Series.Add(series5);
             chart1.Series.Add(series6);
-            chart1.Size = new Size(737, 558);
+            chart1.Size = new Size(1084, 668);
             chart1.TabIndex = 0;
             chart1.Text = "chart1";
             chart1.Click += chart1_Click;

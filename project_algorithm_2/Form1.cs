@@ -160,6 +160,34 @@ namespace project_algorithm_2
                 QuickSort(a, pi + 1, high);
             }
         }
+        //void BakirSort(int[] a)
+        //{
+
+        //    int max = a[0];
+        //    for (int i = 1; i < a.Length; i++)
+        //    {
+        //        if (a[i] > max) max = a[i];
+        //    }
+
+        //    int[] count = new int[max + 1];
+
+        //    for (int i = 0; i < a.Length; i++)
+        //    {
+        //        count[a[i]]++;
+        //    }
+
+        //    int[] result = new int[a.Length];
+        //    int index = 0;
+
+        //    for (int i = 0; i < count.Length; i++)
+        //    {
+        //        for (int j = 0; j < count[i]; j++)
+        //        {
+        //            result[index] = i;
+        //            index++;
+        //        }
+        //    }
+        //}
         void BakirSort(int[] a)
         {
 
@@ -189,14 +217,14 @@ namespace project_algorithm_2
             }
         }
 
-       private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             int size = (int)numElements.Value;
             a = new int[size];
             Random rand = new Random();
             for (int i = 0; i < size; i++)
             {
-                a[i] = rand.Next(1, 100);
+                a[i] = rand.Next(1,1000);
 
             }
             lblViewMessege.Visible = true;
